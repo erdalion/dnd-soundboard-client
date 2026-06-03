@@ -5,7 +5,7 @@ import PlayArrowIcon from "../svg/play-arrow-icon";
 import ThreeDotsIcon from "../svg/three-dots-icon";
 import { useEffect, useRef } from "react";
 
-function SoundButton({ sound }: { sound: Sound }) {
+function SoundButton({ sound, onEdit }: { sound: Sound; onEdit: (sound: Sound) => void }) {
   const buttonRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (buttonRef.current != null) {
@@ -29,7 +29,7 @@ function SoundButton({ sound }: { sound: Sound }) {
         );
       }}
     >
-      <button className="sound-button-menu-button">
+      <button className="sound-button-menu-button" onClick={(e) => {e.stopPropagation(); onEdit(sound);}}>
         <ThreeDotsIcon />
       </button>
       <div className="sound-button-icon emoji">

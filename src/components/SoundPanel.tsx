@@ -9,9 +9,11 @@ import type { SoundCategory } from "../aliases/sound-category";
 function SoundPanel({
   categories,
   directoryId,
+  onEditSound,
 }: {
   categories: Array<SoundCategory> | undefined;
   directoryId: number | undefined;
+  onEditSound: (sound: Sound) => void;
 }) {
   const [sounds, setSounds] = useState<Array<Sound> | undefined>(undefined);
 
@@ -39,7 +41,7 @@ function SoundPanel({
             <CategoryNav key={category.category_id} name={category.name}>
               {sounds.map((sound, index) =>
                 sound.category_id == category.category_id ? (
-                  <SoundButton sound={sound} key={index}></SoundButton>
+                  <SoundButton sound={sound} key={index} onEdit={onEditSound}></SoundButton>
                 ) : null,
               )}
             </CategoryNav>

@@ -9,9 +9,11 @@ import SoundDialog from "./components/SoundDialog";
 import type { SoundCategory } from "./aliases/sound-category";
 import type { ServerResponse } from "./aliases/server-response";
 import fetchToServer from "./fetch-to-server";
+import type { Sound } from "./aliases/sound";
 
 function App() {
   // const x: number = "foo";
+  const [editedSound, setEditedSound] = useState<Sound | null>(null);
   const [directory, setDirectory] = useState<
     | {
         folder_id: number;
@@ -46,18 +48,20 @@ function App() {
       />
       <SearchPanel
         onNewSoundButtonClick={() => {
+          setEditedSound(null);
           setSoundDialogOpen(true);
         }}
       />
       {soundDialogOpen ? (
         <SoundDialog
           categories={categories}
+          sound={editedSound}
           onCloseDialog={() => {
             setSoundDialogOpen(false);
           }}
         />
       ) : null}
-      <SoundPanel categories={categories} directoryId={directory?.folder_id} />
+      <SoundPanel categories={categories} directoryId={directory?.folder_id} onEditSound={(sound) => {setEditedSound(sound); setSoundDialogOpen(true);}}/>
     </main>
   );
 }

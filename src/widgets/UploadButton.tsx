@@ -1,13 +1,15 @@
 function UploadButton({
+  label,
   disabled,
   onClick,
 }: {
+  label: string;
   disabled: boolean;
   onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }) {
   return (
     <button disabled={disabled} onClick={onClick}>
-      Dodaj dźwięk
+      {label}
     </button>
   );
 }

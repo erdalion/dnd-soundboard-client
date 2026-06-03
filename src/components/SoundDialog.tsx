@@ -7,13 +7,16 @@ import CategoryPicker from "../widgets/CategoryPicker";
 import type { SoundCategory } from "../aliases/sound-category";
 import UploadButton from "../widgets/UploadButton";
 import sendFileToServer from "../send-file-to-server";
+import type { Sound } from "../aliases/sound";
 
 function SoundDialog({
   categories,
   onCloseDialog,
+  sound,
 }: {
   categories: Array<SoundCategory> | undefined;
   onCloseDialog: () => void;
+  sound: Sound | null;
 }) {
   const [file, setFile] = useState<File | null>(null);
   const emoji = useRef<string>("");
@@ -37,26 +40,30 @@ function SoundDialog({
       ></div>
       <div id="sound-dialog">
         <SoundIconPicker
+          defaultEmoji={sound ? sound.icon : null}
           onEmojiChoosen={(emojiAttr) => {
             emoji.current = emojiAttr;
           }}
         />
         <SoundNameInput
+          defaultName={sound ? sound.name : null}
           onNameChange={(nameAttr) => {
             name.current = nameAttr;
           }}
         />
         <CategoryPicker
+          defaultCategoryID={sound ? sound.category_id : null}
           onCategoryChoosen={(categoryAttr) => {
             category.current = categoryAttr;
           }}
           categories={categories}
         />
+        {sound ? null :
         <FileButton
           onFileChoosen={(fileAttr) => {
             setFile(fileAttr);
           }}
-        ></FileButton>
+        ></FileButton>}
         {file == null ? null : (
           <AudioShow
             onRegionChanged={(startAttr, endAttr) => {
@@ -67,10 +74,15 @@ function SoundDialog({
           />
         )}
         <UploadButton
+          label = {sound ? "Edytuj" : "Dodaj dźwięk"}
           disabled={
-            name.current == "" || category.current == null || file == null
+            sound == null && (name.current == "" || category.current == null || file == null)
           }
           onClick={() => {
+            if(sound){
+                //edit-sound
+            }
+            else{
             if (file == null) return;
             if (category.current == null) return;
             if (name.current == "") return;
@@ -84,7 +96,7 @@ function SoundDialog({
             }).then(() => {
               console.log("dodalem pliczek essa");
             });
-          }}
+          }}}
         />
       </div>
     </>

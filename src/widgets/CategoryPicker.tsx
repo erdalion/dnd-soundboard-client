@@ -3,13 +3,15 @@ import type { SoundCategory } from "../aliases/sound-category";
 import ArrowDownIcon from "../svg/arrow-down-icon";
 
 function CategoryPicker({
+  defaultCategoryID,
   onCategoryChoosen,
   categories,
 }: {
+  defaultCategoryID: number | null,
   onCategoryChoosen: (category: SoundCategory) => void;
   categories: Array<SoundCategory> | undefined;
 }) {
-  const [choosenCategory, setChoosenCategory] = useState<SoundCategory | null>(
+  const [choosenCategory, setChosenCategory] = useState<SoundCategory | null>(
     null,
   );
   const [selectOpen, setSelectOpen] = useState<boolean>(false);
@@ -17,6 +19,9 @@ function CategoryPicker({
   const categoryPickerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if(defaultCategoryID != null && categories){
+        setChosenCategory(categories.find(c => c.category_id === defaultCategoryID) || null);
+    }
     const detectClickingOutside = (event: Event) => {
       if (categoryPickerRef.current == null) return;
       const withinBoundaries = event
@@ -33,7 +38,7 @@ function CategoryPicker({
     return () => {
       document.removeEventListener("click", detectClickingOutside);
     };
-  }, []);
+  }, [categories]);
 
   return (
     <div ref={categoryPickerRef} className="category-picker">
@@ -55,7 +60,7 @@ function CategoryPicker({
               <div
                 key={index}
                 onClick={() => {
-                  setChoosenCategory(category);
+                  setChosenCategory(category);
                   onCategoryChoosen(category);
                 }}
                 className="category-select-option"

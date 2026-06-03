@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChooseEmojiIcon from "../svg/choose-emoji-icon";
 import EmojiPickerEmbed from "./EmojiPickerEmbed";
 
 function SoundIconPicker({
+  defaultEmoji,
   onEmojiChoosen,
 }: {
+  defaultEmoji:string | null
   onEmojiChoosen: (emoji: string) => void;
 }) {
   const [emoji, setEmoji] = useState<string | null>(null);
   const [pickerOpen, setPickerOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if(defaultEmoji) setEmoji(defaultEmoji);
+  }, [])
   return (
     <>
       <button

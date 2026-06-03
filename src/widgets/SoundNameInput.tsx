@@ -1,6 +1,8 @@
 function SoundNameInput({
+  defaultName,
   onNameChange,
 }: {
+  defaultName:string | null
   onNameChange: (name: string) => void;
 }) {
   return (
@@ -9,6 +11,7 @@ function SoundNameInput({
         onNameChange(event.target.value);
       }}
       className="sound-name-input"
+      value={defaultName ? defaultName : ""}
       type="text"
       placeholder="Podaj nazwę dźwięku"
     ></input>
