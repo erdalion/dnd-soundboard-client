@@ -7,6 +7,7 @@ import CategoryPicker from "../widgets/CategoryPicker";
 import type { SoundCategory } from "../aliases/sound-category";
 import UploadButton from "../widgets/UploadButton";
 import sendFileToServer from "../send-file-to-server";
+import fetchToServer from "../fetch-to-server";
 import type { Sound } from "../aliases/sound";
 
 function SoundDialog({
@@ -20,7 +21,7 @@ function SoundDialog({
 }) {
   const [file, setFile] = useState<File | null>(null);
   const emoji = useRef<string>("");
-  const name = useRef<string>("");
+  const name = useRef<string | null>("");
   const category = useRef<SoundCategory | null>(null);
   const start = useRef<number>(0);
   const end = useRef<number>(-1);
@@ -80,7 +81,26 @@ function SoundDialog({
           }
           onClick={() => {
             if(sound){
-                //edit-sound
+              const payload: any = {
+                soundId: sound.sound_id,
+              };
+
+              if (name.current !== "" && name.current !== sound.name) {
+                payload.newName = name.current;
+              }
+
+              if (emoji.current !== "" && emoji.current !== sound.icon) {
+                payload.newIcon = emoji.current;
+              }
+
+              if (category.current != null && category.current.category_id !== sound.category_id) {
+                payload.newCategoryId = category.current.category_id;
+              }
+              console.log(payload)
+
+              fetchToServer("edit-sound", JSON.stringify(payload));
+                onCloseDialog();
+                onCloseDialog();
             }
             else{
             if (file == null) return;
@@ -95,6 +115,7 @@ function SoundDialog({
               end: end.current,
             }).then(() => {
               console.log("dodalem pliczek essa");
+              onCloseDialog();
             });
           }}}
         />

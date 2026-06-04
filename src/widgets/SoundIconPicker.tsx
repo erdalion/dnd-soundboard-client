@@ -13,7 +13,10 @@ function SoundIconPicker({
   const [pickerOpen, setPickerOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    if(defaultEmoji) setEmoji(defaultEmoji);
+    if(defaultEmoji){ 
+        setEmoji(defaultEmoji);
+        onEmojiChoosen(defaultEmoji);
+    }
   }, [])
   return (
     <>

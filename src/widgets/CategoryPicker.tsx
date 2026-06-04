@@ -8,7 +8,7 @@ function CategoryPicker({
   categories,
 }: {
   defaultCategoryID: number | null,
-  onCategoryChoosen: (category: SoundCategory) => void;
+  onCategoryChoosen: (category: SoundCategory | null) => void;
   categories: Array<SoundCategory> | undefined;
 }) {
   const [choosenCategory, setChosenCategory] = useState<SoundCategory | null>(
@@ -20,7 +20,9 @@ function CategoryPicker({
 
   useEffect(() => {
     if(defaultCategoryID != null && categories){
-        setChosenCategory(categories.find(c => c.category_id === defaultCategoryID) || null);
+        let tempFind = categories.find(c => c.category_id === defaultCategoryID) || null
+        setChosenCategory(tempFind);
+        onCategoryChoosen(tempFind);
     }
     const detectClickingOutside = (event: Event) => {
       if (categoryPickerRef.current == null) return;
