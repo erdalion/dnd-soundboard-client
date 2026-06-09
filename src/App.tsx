@@ -13,6 +13,7 @@ import type { Sound } from "./aliases/sound";
 
 function App() {
   // const x: number = "foo";
+  //test
   const [editedSound, setEditedSound] = useState<Sound | null>(null);
   const [directory, setDirectory] = useState<
     | {
