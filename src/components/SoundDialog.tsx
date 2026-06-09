@@ -77,7 +77,7 @@ function SoundDialog({
         <UploadButton
           label = {sound ? "Edytuj" : "Dodaj dźwięk"}
           disabled={
-            sound == null && (name.current == "" || category.current == null || file == null)
+            sound == null ? (name.current === "" || category.current == null || file == null) : false
           }
           onClick={() => {
             if(sound){
