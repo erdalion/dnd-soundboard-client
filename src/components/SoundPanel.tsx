@@ -7,49 +7,49 @@ import CategoryNav from "../widgets/CategoryNav";
 import type { SoundCategory } from "../aliases/sound-category";
 
 function SoundPanel({
-  categories,
-  directoryId,
-  onEditSound,
+    categories,
+    directoryId,
+    onEditSound,
 }: {
-  categories: Array<SoundCategory> | undefined;
-  directoryId: number | undefined;
-  onEditSound: (sound: Sound) => void;
+    categories: Array<SoundCategory> | undefined;
+    directoryId: number | undefined;
+    onEditSound: (sound: Sound) => void;
 }) {
-  const [sounds, setSounds] = useState<Array<Sound> | undefined>(undefined);
+    const [sounds, setSounds] = useState<Array<Sound> | undefined>(undefined);
 
-  useEffect(() => {
-    console.log("zmieniam directory");
-    fetchToServer<ServerResponse<Array<Sound>>>(
-      "get-sounds",
-      JSON.stringify({ folderId: directoryId }),
-    ).then((response) => {
-      console.log(response);
-      setSounds(response.result);
-    });
-  }, [directoryId]);
+    useEffect(() => {
+        console.log("zmieniam directory");
+        fetchToServer<ServerResponse<Array<Sound>>>(
+            "get-sounds",
+            JSON.stringify({ folderId: directoryId }),
+        ).then((response) => {
+            console.log(response);
+            setSounds(response.result);
+        });
+    }, [directoryId]);
 
-  return (
-    <div id="sound-panel">
-      {sounds == undefined || categories == undefined ? (
-        <span>loading...</span>
-      ) : sounds.length == 0 ? (
-        <span>Brak dźwięków do puszczania :(</span>
-      ) : (
-        categories?.map((category) =>
-          sounds.filter((sound) => sound.category_id == category.category_id)
-            .length == 0 ? null : (
-            <CategoryNav key={category.category_id} name={category.name}>
-              {sounds.map((sound, index) =>
-                sound.category_id == category.category_id ? (
-                  <SoundButton sound={sound} key={index} onEdit={onEditSound}></SoundButton>
-                ) : null,
-              )}
-            </CategoryNav>
-          ),
-        )
-      )}
-    </div>
-  );
+    return (
+        <div id="sound-panel">
+            {sounds == undefined || categories == undefined ? (
+                <span>loading...</span>
+            ) : sounds.length == 0 ? (
+                <span>Brak dźwięków do puszczania :(</span>
+            ) : (
+                categories?.map((category) =>
+                    sounds.filter((sound) => sound.category_id == category.category_id)
+                        .length == 0 ? null : (
+                        <CategoryNav key={category.category_id} name={category.name}>
+                            {sounds.map((sound, index) =>
+                                sound.category_id == category.category_id ? (
+                                    <SoundButton sound={sound} key={index} onEdit={onEditSound}></SoundButton>
+                                ) : null,
+                            )}
+                        </CategoryNav>
+                    ),
+                )
+            )}
+        </div>
+    );
 }
 
 export default SoundPanel;

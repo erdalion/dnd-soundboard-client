@@ -1,17 +1,17 @@
 import type { MouseEventHandler, ReactNode } from "react";
 
 function AudioControlButton({
-  children,
-  onClick,
+    children,
+    onClick,
 }: {
-  children: ReactNode;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+    children: ReactNode;
+    onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
-  return (
-    <button onClick={onClick} className="audio-control-button">
-      {children}
-    </button>
-  );
+    return (
+        <button onClick={onClick} className="audio-control-button">
+            {children}
+        </button>
+    );
 }
 
 export default AudioControlButton;

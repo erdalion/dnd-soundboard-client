@@ -1,4 +1,4 @@
 export type ServerResponse<T> = {
-  success: boolean;
-  result: T;
+    success: boolean;
+    result: T;
 };

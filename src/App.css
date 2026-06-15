@@ -1,283 +1,286 @@
 :root {
-  --color-background: #2d1f44;
-  --color-border: #b66570;
-  --color-sound-button: #0c111f;
-  --color-sound-icon: #80466e;
-  --color-detail: #ed9e6f;
-  --color-directory: #512f5c;
+    --color-background: #2d1f44;
+    --color-border: #b66570;
+    --color-sound-button: #0c111f;
+    --color-sound-icon: #80466e;
+    --color-detail: #ed9e6f;
+    --color-directory: #512f5c;
 }
+
 main {
-  width: 100%;
-  height: fit-content;
-  display: grid;
-  grid-template-rows: max-content 1fr;
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-rows: max-content 1fr;
 }
 
 #directories-panel {
-  grid-area: directories-panel;
-  background-color: var(--color-directory);
-  color: var(--color-detail);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    grid-area: directories-panel;
+    background-color: var(--color-directory);
+    color: var(--color-detail);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header-directories-text {
-  text-align: center;
-  padding: 10px;
-  font-size: 2em;
+    text-align: center;
+    padding: 10px;
+    font-size: 2em;
 }
 
-#directories-panel > button {
-  width: 85%;
-  padding: 1em;
-  border: 10px solid #1e2e4f;
-  border-radius: 35px;
-  color: #e2e2e2;
-  background: #262626;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+#directories-panel>button {
+    width: 85%;
+    padding: 1em;
+    border: 10px solid #1e2e4f;
+    border-radius: 35px;
+    color: #e2e2e2;
+    background: #262626;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-#directories-panel > button.chosen {
-  background: var(--color-detail);
-  color: var(--color-background);
-  font-weight: bold;
+#directories-panel>button.chosen {
+    margin-bottom: 2em;
+    background: var(--color-detail);
+    color: var(--color-background);
+    font-weight: bold;
 }
 
 hr {
-  display: block;
-  height: 2px;
-  width: 90%;
-  background-color: black;
-  outline: none;
-  border: none;
+    display: block;
+    height: 2px;
+    width: 90%;
+    background-color: black;
+    outline: none;
+    border: none;
 }
 
 .sound-dialog-background {
-  position: fixed;
-  inset: 0;
-  background-color: black;
-  opacity: 0.5;
-  z-index: 100;
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 100;
 }
 
 #sound-dialog {
-  position: fixed;
-  width: 90vw;
-  height: 90vh;
-  background-color: aqua;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  z-index: 101;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    width: 90vw;
+    height: 90vh;
+    background-color: var(--color-directory);
+    border-radius: 35px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 101;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .sound-icon-button {
-  padding: 90px 150px;
-  border: dashed black;
-  width: fit-content;
-  height: fit-content;
-  background: transparent;
-  border-radius: 5px;
-  position: relative;
-  box-sizing: border-box;
-  transition: 0.1s;
+    padding: 90px 150px;
+    border: dashed black;
+    width: fit-content;
+    height: fit-content;
+    background: transparent;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: 0.1s;
 }
 
 .sound-icon-button::before {
-  content: "";
-  position: absolute;
-  border-radius: 5px;
-  inset: 0;
+    content: "";
+    position: absolute;
+    border-radius: 5px;
+    inset: 0;
 }
 
 .sound-icon-button:hover::before {
-  background-color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .sound-icon-button-emoji {
-  font-size: 150px;
-  text-align: center;
-  width: fit-content;
-  height: fit-content;
+    font-size: 150px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
 }
 
 .sound-icon-button .choose-emoji-icon {
-  width: 150px;
-  height: 150px;
-  /* width: 100%;
+    width: 150px;
+    height: 150px;
+    /* width: 100%;
   height: 100%; */
 }
 
 .sound-icon-button-text {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 30px;
-  font-size: 12px;
-  width: max-content;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    font-size: 12px;
+    width: max-content;
 }
 
 .emoji-picker-background {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100vw;
-  height: 100vh;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 emoji-picker {
-  position: absolute;
-  z-index: 100;
-  --emoji-font-family: "Noto Color Emoji", sans-serif;
-  --emoji-size: 1.45em;
-  --num-columns: 7;
-  width: 450px;
-  height: 600px;
+    position: absolute;
+    z-index: 100;
+    --emoji-font-family: "Noto Color Emoji", sans-serif;
+    --emoji-size: 1.45em;
+    --num-columns: 7;
+    width: 450px;
+    height: 600px;
 }
 
 .emoji {
-  font-family: "Noto Color Emoji", sans-serif;
+    font-family: "Noto Color Emoji", sans-serif;
 }
 
 .file-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* width: 100%; */
-  padding: 10px 20px;
-  border: 2px black solid;
-  border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    padding: 10px 20px;
+    border: 2px black solid;
+    border-radius: 15px;
 }
 
 .file-button:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .file-button .upload-file-icon {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
 
 /* .file-button-text {
 } */
 
 .solid {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
 .file-button-input {
-  display: none;
+    display: none;
 }
 
 .sound-name-input {
-  border-radius: 50px;
-  padding: 10px 20px;
-  font-size: 20px;
-  background-color: transparent;
-  border: none;
-  border: solid 2px black;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    border: solid 2px black;
 }
 
 .category-picker {
-  position: relative;
+    position: relative;
 }
 
 .category-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: transparent;
-  border: 2px solid black;
-  border-radius: 5px;
-  position: relative;
-  box-sizing: border-box;
-  min-width: 200px;
-  /* width: max-content; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    min-width: 200px;
+    /* width: max-content; */
 }
 
 .category-button:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .category-button-text {
-  white-space: nowrap;
-  text-align: center;
-  width: 100%;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
 }
 
 .category-button .arrow-down-icon {
-  width: 50px;
+    width: 50px;
 }
 
 .category-select {
-  position: absolute;
-  background-color: white;
-  width: 100%;
-  /* min-width: min-content; */
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    /* min-width: min-content; */
 
-  top: 100%;
-  left: 0;
-  z-index: 99;
+    top: 100%;
+    left: 0;
+    z-index: 99;
 }
 
 .category-select-option {
-  padding: 15px;
-  box-sizing: border-box;
-  width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .category-select-option:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 .audio-visualizer {
-  width: 100%;
-  height: fit-content;
-  position: relative;
+    width: 100%;
+    height: fit-content;
+    position: relative;
 }
 
 .audio-control {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
 }
 
 .audio-control-button {
-  background-color: transparent;
-  padding: 10px;
-  border-radius: 30px;
-  border: black 2px solid;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 30px;
+    border: black 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .audio-control-button .icon {
-  fill: black;
+    fill: black;
 }
 
 .audio-control-button:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* .directories-loading {
@@ -287,190 +290,190 @@ emoji-picker {
 } */
 
 #search-panel {
-  grid-area: search-panel;
-  display: flex;
-  justify-content: center;
-  padding: 0.5em;
+    grid-area: search-panel;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
 }
 
 #sound-panel {
-  grid-area: sound-panel;
-  padding: 20px;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
+    grid-area: sound-panel;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
 }
 
 .search-bar {
-  border-radius: 5em;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  width: max-content;
-  display: flex;
-  align-items: center;
+    border-radius: 5em;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    width: max-content;
+    display: flex;
+    align-items: center;
 }
 
 .search-bar-text-input {
-  /* width: 500px; */
-  max-width: 100%;
-  font-size: 1.5em;
-  padding: 0.25em;
-  padding-left: 1em;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--color-detail);
+    /* width: 500px; */
+    max-width: 100%;
+    font-size: 1.5em;
+    padding: 0.25em;
+    padding-left: 1em;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--color-detail);
 }
 
 .search-bar-submit-button {
-  width: 3em;
-  height: 3em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+    width: 3em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
 .search-bar-submit-button .search-icon {
-  width: 80%;
-  height: 80%;
-  fill: var(--color-detail);
+    width: 80%;
+    height: 80%;
+    fill: var(--color-detail);
 }
 
 .new-sound-button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: none;
-  position: fixed;
-  top: 1;
-  left: calc(100vw - 55px - 0.5em);
-  cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: none;
+    position: fixed;
+    top: 1;
+    left: calc(100vw - 55px - 0.5em);
+    cursor: pointer;
 }
 
 .new-sound-button .add-new-sound-icon {
-  height: 80%;
-  width: 80%;
-  fill: var(--color-detail);
-  margin-top: 5px;
+    height: 80%;
+    width: 80%;
+    fill: var(--color-detail);
+    margin-top: 5px;
 }
 
 .category-nav {
-  width: fit-content;
-  height: fit-content;
-  padding: 20px 10px;
-  position: relative;
-  border: 3px solid var(--color-border);
-  box-sizing: border-box;
-  border-radius: 15px;
-  background-color: var(--color-background);
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  background-color: rgba(209, 107, 204, 0.521);
-  backdrop-filter: blur(10px);
+    width: fit-content;
+    height: fit-content;
+    padding: 20px 10px;
+    position: relative;
+    border: 3px solid var(--color-border);
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: var(--color-background);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: rgba(209, 107, 204, 0.521);
+    backdrop-filter: blur(10px);
 }
 
 .category-nav-name {
-  position: absolute;
-  top: -13px;
-  left: 25px;
-  padding: 1px 6px;
-  font-size: 115%;
-  font-weight: bold;
-  border: 3px solid var(--color-border);
-  border-radius: 5px;
-  color: var(--color-detail);
-  background: var(--color-background);
+    position: absolute;
+    top: -13px;
+    left: 25px;
+    padding: 1px 6px;
+    font-size: 115%;
+    font-weight: bold;
+    border: 3px solid var(--color-border);
+    border-radius: 5px;
+    color: var(--color-detail);
+    background: var(--color-background);
 }
 
 .sound-button {
-  width: 220px;
-  height: 260px;
-  /* border: 2px solid var(--color-border); */
-  border-radius: 20px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  box-sizing: border-box;
-  background-color: var(--color-sound-button);
-  justify-content: space-between;
-  position: relative;
-  transform-style: preserve-3d;
-  transform: perspective(1000px);
+    width: 220px;
+    height: 260px;
+    /* border: 2px solid var(--color-border); */
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: var(--color-sound-button);
+    justify-content: space-between;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
 }
 
 .sound-button-menu-button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 .sound-button-menu-button:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .sound-button-menu-button .three-dots-icon {
-  width: 100%;
-  height: 100%;
-  fill: var(--color-detail);
+    width: 100%;
+    height: 100%;
+    fill: var(--color-detail);
 }
 
 .sound-button-icon {
-  width: 100%;
-  background-color: var(--color-sound-icon);
-  height: 50%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 80px;
-  border-radius: 15px;
-  transform: translateZ(15px);
-  /* align-self: center center; */
+    width: 100%;
+    background-color: var(--color-sound-icon);
+    height: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    border-radius: 15px;
+    transform: translateZ(15px);
+    /* align-self: center center; */
 }
 
 .sound-button-play-icon {
-  width: 100%;
-  background-color: var(--color-sound-icon);
-  height: 30%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 80px;
-  border-radius: 15px;
-  transform: translateZ(15px);
+    width: 100%;
+    background-color: var(--color-sound-icon);
+    height: 30%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    border-radius: 15px;
+    transform: translateZ(15px);
 }
 
 .sound-button-play-icon .play-arrow-icon {
-  height: 80%;
-  width: 80%;
-  /* aspect-ratio: 1/1; */
-  fill: var(--color-detail);
+    height: 80%;
+    width: 80%;
+    /* aspect-ratio: 1/1; */
+    fill: var(--color-detail);
 }
 
 .sound-button-name {
-  text-align: center;
-  color: var(--color-detail);
-  font-weight: bold;
+    text-align: center;
+    color: var(--color-detail);
+    font-weight: bold;
 }
