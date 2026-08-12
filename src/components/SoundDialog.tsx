@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import CloseIcon from "../svg/close-icon";
 import FileButton from "../widgets/FileButton";
 import AudioShow from "../widgets/AudioShow";
 import SoundIconPicker from "../widgets/SoundIconPicker";
@@ -40,6 +41,11 @@ function SoundDialog({
                 }}
             ></div>
             <div id="sound-dialog" data-lenis-prevent>
+                <div 
+                    id="sound-dialog-close"
+                    onClick={() => {
+                        onCloseDialog();
+                    }}><CloseIcon/></div>
                 <SoundIconPicker
                     defaultEmoji={sound ? sound.icon : null}
                     onEmojiChoosen={(emojiAttr) => {

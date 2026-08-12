@@ -87,7 +87,7 @@ hr {
 #sound-dialog {
     z-index: 20;
     position: fixed;
-    width: 70vw;
+    width: 80vw;
     height: 70vh;
     background-color: var(--color-directory);
     color: var(--color-white-text);
@@ -104,6 +104,16 @@ hr {
     justify-content: flex-start;
     padding-top: 5rem;
     overscroll-behavior-y: contain !important;
+}
+
+#sound-dialog-close{
+    inset: 0;
+    fill: red;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 1rem;
+    left: calc(100% - 40px - 1rem);
 }
 
 .sound-icon-button {
@@ -171,7 +181,7 @@ emoji-picker {
     --emoji-font-family: "Noto Emoji", sans-serif;
     --emoji-size: 1.45em;
     --num-columns: 7;
-    width: 450px;
+    width: fit-content;
     height: 600px;
 }
 

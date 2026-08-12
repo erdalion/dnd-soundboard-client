@@ -95,4 +95,10 @@
         max-width: 80%;
         box-sizing: border-box;
     }
+
+    #sound-dialog{
+        padding: 1rem 2rem;
+        height: fit-content;
+    }
+
 }
