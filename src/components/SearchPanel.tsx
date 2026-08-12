@@ -8,7 +8,7 @@ function SearchPanel({
 }) {
     return (
         <div id="search-panel">
-            <SearchBar />
+            {/* <SearchBar /> */}
             <NewSoundButton onClick={onNewSoundButtonClick} />
         </div>
     );

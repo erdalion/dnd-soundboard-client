@@ -8,7 +8,7 @@ function UploadButton({
     onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }) {
     return (
-        <button disabled={disabled} onClick={onClick}>
+        <button id="sound-button-submit" disabled={disabled} onClick={onClick}>
             {label}
         </button>
     );

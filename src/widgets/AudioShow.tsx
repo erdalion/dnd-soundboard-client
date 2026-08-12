@@ -27,8 +27,7 @@ function AudioShow({
     const importRegionOptions: RegionParams = {
         start: 0,
         end: 10,
-        content: "Import range (max 15 seconds)",
-        color: "rgba(0,0,0,0.2)",
+        color: "rgba(237,158,111,0.2)",
         drag: false,
         resize: true,
         minLength: 0.5,

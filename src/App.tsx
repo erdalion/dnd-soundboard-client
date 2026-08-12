@@ -1,6 +1,6 @@
 import "./App.css";
 import "./App-mobile.css";
-import "./App-desktop.css";
+import "./App-desktop.css"
 import DirectoriesPanel from "./components/DirectoriesPanel";
 import SearchPanel from "./components/SearchPanel";
 import SoundPanel from "./components/SoundPanel";
@@ -11,9 +11,12 @@ import type { ServerResponse } from "./aliases/server-response";
 import fetchToServer from "./fetch-to-server";
 import type { Sound } from "./aliases/sound";
 
+//smooth scrolling
+import 'lenis/dist/lenis.css';
+import { ReactLenis, useLenis } from 'lenis/react'
+
 function App() {
-    // const x: number = "foo";
-    //test
+    const lenis = useLenis((lenis) => {})
     const [editedSound, setEditedSound] = useState<Sound | null>(null);
     const [directory, setDirectory] = useState<
         | {
@@ -39,6 +42,8 @@ function App() {
 
     return (
         <main>
+            <ReactLenis root />
+            {/* <div className="background-noise"></div> */}
             <DirectoriesPanel
                 onDirectoryChange={(directory: {
                     folder_id: number;

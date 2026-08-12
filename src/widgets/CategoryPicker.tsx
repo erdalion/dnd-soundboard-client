@@ -46,33 +46,37 @@ function CategoryPicker({
         <div ref={categoryPickerRef} className="category-picker">
             <button
                 className="category-button"
+                style={{
+                    borderRadius: selectOpen ? "30px 30px 0 0" : "50px",
+                }}
                 onClick={() => {
-                    setSelectOpen(!selectOpen);
+                    setSelectOpen(prev => !prev);
                 }}
             >
                 <span className="category-button-text">
                     {choosenCategory == null
-                        ? "--Wybierz kategorie--"
+                        ? "Kategoria"
                         : choosenCategory.name}
                 </span>
+
                 <ArrowDownIcon />
-                {selectOpen ? (
-                    <div className="category-select">
-                        {categories?.map((category, index) => (
-                            <div
-                                key={index}
-                                onClick={() => {
-                                    setChosenCategory(category);
-                                    onCategoryChoosen(category);
-                                }}
-                                className="category-select-option"
-                            >
-                                {category.name}
-                            </div>
-                        ))}
-                    </div>
-                ) : null}
             </button>
+
+            <div className={`category-select ${selectOpen ? "open" : ""}`}>
+                {categories?.map((category, index) => (
+                    <div
+                        key={index}
+                        onClick={() => {
+                            setChosenCategory(category);
+                            onCategoryChoosen(category);
+                            setSelectOpen(false);
+                        }}
+                        className="category-select-option"
+                    >
+                        {category.name}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

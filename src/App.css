@@ -1,10 +1,30 @@
 :root {
-    --color-background: #2d1f44;
-    --color-border: #b66570;
-    --color-sound-button: #0c111f;
+    --color-background: #0d0d0d;
+    --color-border: #3c3c3c;
+    --color-sound-button: #1e1e20;
     --color-sound-icon: #80466e;
     --color-detail: #ed9e6f;
-    --color-directory: #512f5c;
+    --color-text: #212121;
+    --color-white-text: #f5f5f7;
+    --color-directory: #111112;
+    --color-button: #0071e3;
+    --noise-image: url(/src/assets/noise-light.png);
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+    background: var(--color-background);
+    z-index: 0;
+    inset: 0;
+}
+
+.background-noise {
+	position: absolute;
+    height: 100%;
+	z-index: 1;
+	background-image: var(--noise-image);
+    background-size: 30px;
+	inset: 0;
 }
 
 main {
@@ -15,10 +35,12 @@ main {
 }
 
 #directories-panel {
+    z-index: 2;
     grid-area: directories-panel;
     background-color: var(--color-directory);
-    color: var(--color-detail);
+    color: var(--color-white-text);
     min-height: 100vh;
+    padding-top: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,19 +55,13 @@ main {
 #directories-panel>button {
     width: 85%;
     padding: 1em;
-    border: 10px solid #1e2e4f;
     border-radius: 35px;
-    color: #e2e2e2;
-    background: #262626;
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    color: var(--color-white-text);
+    background: var(--color-sound-button);
     border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 #directories-panel>button.chosen {
-    margin-bottom: 2em;
     background: var(--color-detail);
     color: var(--color-background);
     font-weight: bold;
@@ -64,43 +80,50 @@ hr {
     position: fixed;
     inset: 0;
     background-color: black;
-    opacity: 0.5;
-    z-index: 100;
+    opacity: 0.9;
+    z-index: 14;
 }
 
 #sound-dialog {
+    z-index: 20;
     position: fixed;
-    width: 90vw;
-    height: 90vh;
+    width: 70vw;
+    height: 70vh;
     background-color: var(--color-directory);
+    color: var(--color-white-text);
     border-radius: 35px;
+    border: 1px solid var(--color-border);
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    z-index: 101;
     display: flex;
     gap: 20px;
+    padding: 2rem;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 5rem;
+    overscroll-behavior-y: contain !important;
 }
 
 .sound-icon-button {
-    padding: 90px 150px;
-    border: dashed black;
-    width: fit-content;
-    height: fit-content;
+    padding: 30px 50px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: transparent;
-    border-radius: 5px;
+    border-radius: 30px;
     position: relative;
     box-sizing: border-box;
     transition: 0.1s;
+    color: var(--color-white-text);
 }
 
 .sound-icon-button::before {
     content: "";
     position: absolute;
-    border-radius: 5px;
+    border-radius: 30px;
     inset: 0;
 }
 
@@ -110,15 +133,15 @@ hr {
 }
 
 .sound-icon-button-emoji {
-    font-size: 150px;
+    font-size: 100px;
     text-align: center;
     width: fit-content;
     height: fit-content;
 }
 
 .sound-icon-button .choose-emoji-icon {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     /* width: 100%;
   height: 100%; */
 }
@@ -145,7 +168,7 @@ hr {
 emoji-picker {
     position: absolute;
     z-index: 100;
-    --emoji-font-family: "Noto Color Emoji", sans-serif;
+    --emoji-font-family: "Noto Emoji", sans-serif;
     --emoji-size: 1.45em;
     --num-columns: 7;
     width: 450px;
@@ -153,7 +176,8 @@ emoji-picker {
 }
 
 .emoji {
-    font-family: "Noto Color Emoji", sans-serif;
+    font-family: "Noto Emoji", sans-serif;
+    color: var(--color-white-text);
 }
 
 .file-button {
@@ -162,7 +186,7 @@ emoji-picker {
     align-items: center;
     /* width: 100%; */
     padding: 10px 20px;
-    border: 2px black solid;
+    border: 1px solid var(--color-border);
     border-radius: 15px;
 }
 
@@ -179,8 +203,8 @@ emoji-picker {
 } */
 
 .solid {
-    width: 100%;
-    height: 100%;
+    width: 48px;
+    height: 48px;
     object-fit: cover;
     border-radius: 15px;
 }
@@ -190,12 +214,13 @@ emoji-picker {
 }
 
 .sound-name-input {
+    color: var(--color-white-text);
     border-radius: 50px;
     padding: 10px 20px;
     font-size: 20px;
     background-color: transparent;
     border: none;
-    border: solid 2px black;
+    border: 1px solid var(--color-border);
 }
 
 .category-picker {
@@ -208,11 +233,12 @@ emoji-picker {
     align-items: center;
     padding: 15px 20px;
     background: transparent;
-    border: 2px solid black;
-    border-radius: 5px;
+    border: 1px solid var(--color-border);
+    border-radius: 50px;
     position: relative;
     box-sizing: border-box;
     min-width: 200px;
+    transition: 0.7s;
     /* width: max-content; */
 }
 
@@ -222,6 +248,7 @@ emoji-picker {
 }
 
 .category-button-text {
+    color: var(--color-white-text);
     white-space: nowrap;
     text-align: center;
     width: 100%;
@@ -229,17 +256,34 @@ emoji-picker {
 
 .category-button .arrow-down-icon {
     width: 50px;
+    fill: var(--color-white-text);
 }
 
 .category-select {
     position: absolute;
-    background-color: white;
+    border-radius: 0 0 35px 35px;
+    background-color: var(--color-sound-button);
+    color: var(--color-white-text);
+    border: 1px solid var(--color-border);
     width: 100%;
-    /* min-width: min-content; */
-
     top: 100%;
-    left: 0;
+    left: -1px;
     z-index: 99;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease,
+        transform 0.3s ease;
+}
+
+.category-select.open {
+    max-height: 500px;
+    opacity: 1;
+    transform: scaleY(1);
 }
 
 .category-select-option {
@@ -269,14 +313,14 @@ emoji-picker {
     background-color: transparent;
     padding: 10px;
     border-radius: 30px;
-    border: black 2px solid;
+    border: 1px solid var(--color-border);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .audio-control-button .icon {
-    fill: black;
+    fill: var(--color-white-text);
 }
 
 .audio-control-button:hover {
@@ -292,11 +336,13 @@ emoji-picker {
 #search-panel {
     grid-area: search-panel;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     padding: 0.5em;
+    height: 2rem;
 }
 
 #sound-panel {
+    z-index: 2;
     grid-area: sound-panel;
     padding: 20px;
     display: flex;
@@ -307,7 +353,6 @@ emoji-picker {
 .search-bar {
     border-radius: 5em;
     background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.03);
@@ -346,40 +391,37 @@ emoji-picker {
 }
 
 .new-sound-button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: none;
-    position: fixed;
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    background: var(--color-button);
+    border: 0;
+    /* position: fixed;
     top: 1;
-    left: calc(100vw - 55px - 0.5em);
+    left: calc(100vw - 55px - 0.5em); */
     cursor: pointer;
+    z-index: 4;
 }
 
 .new-sound-button .add-new-sound-icon {
     height: 80%;
     width: 80%;
-    fill: var(--color-detail);
+    fill: var(--color-white-text);
     margin-top: 5px;
 }
 
 .category-nav {
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     padding: 20px 10px;
+    margin-top: 0.7rem;
     position: relative;
-    border: 3px solid var(--color-border);
+    border: 1px solid var(--color-border);
     box-sizing: border-box;
     border-radius: 15px;
-    background-color: var(--color-background);
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    background-color: rgba(209, 107, 204, 0.521);
     backdrop-filter: blur(10px);
 }
 
@@ -388,65 +430,58 @@ emoji-picker {
     top: -13px;
     left: 25px;
     padding: 1px 6px;
-    font-size: 115%;
-    font-weight: bold;
-    border: 3px solid var(--color-border);
+    font-size: 18px;
     border-radius: 5px;
-    color: var(--color-detail);
+    color: var(--color-white-text);
     background: var(--color-background);
 }
 
 .sound-button {
-    width: 220px;
-    height: 260px;
-    /* border: 2px solid var(--color-border); */
-    border-radius: 20px;
-    padding: 30px;
+    border-radius: 40px;
+    padding: 0.5rem 1.5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     cursor: pointer;
     box-sizing: border-box;
     background-color: var(--color-sound-button);
-    justify-content: space-between;
+    align-items: center;
     position: relative;
     transform-style: preserve-3d;
     transform: perspective(1000px);
 }
 
 .sound-button-menu-button {
-    position: absolute;
+    /* position: absolute;
     right: 0;
-    top: 0;
-    width: 40px;
-    height: 40px;
+    top: 0; */
+    margin-left: 2rem;
+    width: 6rem;
+    border-radius: 20px;
     background: transparent;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border-radius: 50%;
-}
-
-.sound-button-menu-button:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    transition: .5s;
 }
 
 .sound-button-menu-button .three-dots-icon {
     width: 100%;
     height: 100%;
-    fill: var(--color-detail);
+    fill: var(--color-white-text);
 }
 
 .sound-button-icon {
     width: 100%;
-    background-color: var(--color-sound-icon);
+    /* background-color: var(--color-sound-icon); */
     height: 50%;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 80px;
+    font-size: 3rem;
+    margin-right: 1rem;
     border-radius: 15px;
     transform: translateZ(15px);
     /* align-self: center center; */
@@ -473,7 +508,27 @@ emoji-picker {
 }
 
 .sound-button-name {
+    width: 100%;
     text-align: center;
-    color: var(--color-detail);
+    color: var(--color-white-text);
     font-weight: bold;
+    text-wrap: pretty;
+}
+
+hr{
+    height: 1px;
+    background-color: var(--color-border);
+}
+
+#sound-button-submit{
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid var(--color-button);
+    border: 0;
+}
+
+#sound-button-submit:enabled{
+    background: var(--color-button);
+    cursor: pointer;
 }

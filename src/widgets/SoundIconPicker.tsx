@@ -31,9 +31,6 @@ function SoundIconPicker({
                 ) : (
                     <div className="sound-icon-button-emoji emoji">{emoji}</div>
                 )}
-                <div className="sound-icon-button-text">
-                    Kliknij tutaj aby dodać ikonę dźwięku
-                </div>
             </button>
             {pickerOpen ? (
                 <div

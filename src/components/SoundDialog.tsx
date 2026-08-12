@@ -39,7 +39,7 @@ function SoundDialog({
                     onCloseDialog();
                 }}
             ></div>
-            <div id="sound-dialog">
+            <div id="sound-dialog" data-lenis-prevent>
                 <SoundIconPicker
                     defaultEmoji={sound ? sound.icon : null}
                     onEmojiChoosen={(emojiAttr) => {

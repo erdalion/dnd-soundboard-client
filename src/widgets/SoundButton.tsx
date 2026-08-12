@@ -7,20 +7,18 @@ import { useEffect, useRef } from "react";
 
 function SoundButton({ sound, onEdit }: { sound: Sound; onEdit: (sound: Sound) => void }) {
     const buttonRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        if (buttonRef.current != null) {
-            VanillaTilt.init(buttonRef.current, {
-                reverse: true,
-                max: 5,
-                scale: 1.0125,
-            });
-        }
-    }, [buttonRef]);
+    // useEffect(() => {
+    //     if (buttonRef.current != null) {
+    //         VanillaTilt.init(buttonRef.current, {
+    //             reverse: true,
+    //             max: 5,
+    //             scale: 1.0125,
+    //         });
+    //     }
+    // }, [buttonRef]);
 
     return (
         <div
-            ref={buttonRef}
-            data-tilt
             className="sound-button"
             onClick={() => {
                 fetchToServer(
@@ -29,20 +27,16 @@ function SoundButton({ sound, onEdit }: { sound: Sound; onEdit: (sound: Sound) =
                 );
             }}
         >
+            <div className="sound-button-icon emoji">
+                {(sound.icon)}
+            </div>
+            <div className="sound-button-name">{sound.name}</div>
+            {/* <div className="sound-button-play-icon">
+                <PlayArrowIcon />
+            </div> */}
             <button className="sound-button-menu-button" onClick={(e) => { e.stopPropagation(); onEdit(sound); }}>
                 <ThreeDotsIcon />
             </button>
-            <div className="sound-button-icon emoji">
-                {sound.name == "invisible" ? (
-                    <img src="/src/assets/twardywaz.jpg" className="solid" />
-                ) : (
-                    sound.icon
-                )}
-            </div>
-            <div className="sound-button-name">{sound.name}</div>
-            <div className="sound-button-play-icon">
-                <PlayArrowIcon />
-            </div>
         </div>
     );
 }

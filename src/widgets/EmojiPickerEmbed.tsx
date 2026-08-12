@@ -70,7 +70,7 @@ function EmojiPickerEmbed({
     }, []);
 
     return (
-        <>{open ? <emoji-picker ref={setEmojiPickerRef}> </emoji-picker> : null}</>
+        <>{open ? <emoji-picker data-lenis-prevent ref={setEmojiPickerRef}> </emoji-picker> : null}</>
     );
 }
 

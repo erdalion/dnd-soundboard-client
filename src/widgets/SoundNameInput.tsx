@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function SoundNameInput({
     defaultName,
@@ -18,7 +18,7 @@ function SoundNameInput({
             className="sound-name-input"
             value={name}
             type="text"
-
+            maxLength={18}
             placeholder="Podaj nazwę dźwięku"
         ></input>
     );
