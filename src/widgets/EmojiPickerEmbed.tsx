@@ -58,6 +58,24 @@ function EmojiPickerEmbed({
                     );
                 }
 
+                const hoverOverride = document.createElement("style");
+                hoverOverride.setAttribute("data-emoji-picker-hover-override", "true");
+                hoverOverride.textContent = `
+                    .emoji,
+                    button.emoji,
+                    .emoji:hover,
+                    button.emoji:hover,
+                    .emoji:active,
+                    button.emoji:active,
+                    .emoji:focus-visible,
+                    button.emoji:focus-visible {
+                        transform: none !important;
+                        scale: 1 !important;
+                        transition: none !important;
+                    }
+                `;
+                shadowDom.appendChild(hoverOverride);
+
                 // Delete favorites panel
                 const favorites = shadowDom.querySelector(".favorites");
                 favorites?.remove();

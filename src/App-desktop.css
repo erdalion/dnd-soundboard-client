@@ -3,12 +3,13 @@
         grid-template-areas:
             "directories-panel search-panel"
             "directories-panel sound-panel";
-        grid-template-columns: min(50vw, 300px) 1fr;
-        background-color: var(--color-background);
+        grid-template-columns: min(50vw, 290px) 1fr;
+        background: transparent;
     }
 
     #directories-panel {
         position: relative;
+        border-right: 1px solid var(--color-border);
     }
 
     #directory-button {

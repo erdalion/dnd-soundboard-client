@@ -1,22 +1,8 @@
-import VanillaTilt from "vanilla-tilt";
 import type { Sound } from "../aliases/sound";
 import fetchToServer from "../fetch-to-server";
-import PlayArrowIcon from "../svg/play-arrow-icon";
 import ThreeDotsIcon from "../svg/three-dots-icon";
-import { useEffect, useRef } from "react";
 
 function SoundButton({ sound, onEdit }: { sound: Sound; onEdit: (sound: Sound) => void }) {
-    const buttonRef = useRef<HTMLDivElement>(null);
-    // useEffect(() => {
-    //     if (buttonRef.current != null) {
-    //         VanillaTilt.init(buttonRef.current, {
-    //             reverse: true,
-    //             max: 5,
-    //             scale: 1.0125,
-    //         });
-    //     }
-    // }, [buttonRef]);
-
     return (
         <div
             className="sound-button"

@@ -10,13 +10,14 @@ import type { SoundCategory } from "./aliases/sound-category";
 import type { ServerResponse } from "./aliases/server-response";
 import fetchToServer from "./fetch-to-server";
 import type { Sound } from "./aliases/sound";
+import { Blaze } from "./components/canvasui/Blaze";
 
 //smooth scrolling
-import 'lenis/dist/lenis.css';
-import { ReactLenis, useLenis } from 'lenis/react'
+import "lenis/dist/lenis.css";
+import { ReactLenis, useLenis } from "lenis/react";
 
 function App() {
-    const lenis = useLenis((lenis) => {})
+    useLenis(() => {});
     const [editedSound, setEditedSound] = useState<Sound | null>(null);
     const [directory, setDirectory] = useState<
         | {
@@ -52,6 +53,16 @@ function App() {
                     setDirectory(directory);
                 }}
             />
+            <Blaze
+                height={0.6}
+                sparkColor={[0.55, 0.15, 1]}
+                smokeColor={[0.2, 0.03, 0.35]}
+                distortion={0.35}
+                speed={0.8}
+                sparks={0.7}
+                smoke={0.45}
+                glow={1.2}
+            >
             <SearchPanel
                 onNewSoundButtonClick={() => {
                     setEditedSound(null);
@@ -67,7 +78,10 @@ function App() {
                     }}
                 />
             ) : null}
-            <SoundPanel categories={categories} directoryId={directory?.folder_id} onEditSound={(sound) => { setEditedSound(sound); setSoundDialogOpen(true); }} />
+            
+                <SoundPanel categories={categories} directoryId={directory?.folder_id} onEditSound={(sound) => { setEditedSound(sound); setSoundDialogOpen(true); }} />
+            </Blaze>
+
         </main>
     );
 }
